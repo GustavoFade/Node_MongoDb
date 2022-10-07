@@ -1,10 +1,14 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const formidable = require('express-formidable');
 const linkRouter = require('./routes/linkRoute');
 const app = express();
 const PORT = 3000;
 
-app.use('/',linkRouter);
+// app.use(formidable());
+app.use(express.json())
+app.use(express.urlencoded({extended: true}));
+app.use('/',formidable(),linkRouter);
 // let link = new Link({
 //     title: "Gussstavo Fadel",
 //     description: "Link para o Linkedin",
